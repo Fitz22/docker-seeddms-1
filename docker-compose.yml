@@ -1,0 +1,27 @@
+version: '2'
+
+services:
+  seeddms:
+    restart: always
+    image: fitz22/docker-seeddms1:latest
+    networks:
+    - traefik
+    ports:
+    - "8780:80"
+    volumes:
+    - /home/florent/docker/seeddms/50:/var/www/seeddms50x/
+    - /home/florent/docker/seeddms/data:/var/www/seeddms/data
+    - /home/florent/docker/seeddms/conf:/var/www/seeddms/conf
+    - /home/florent/docker/seeddms/volume:/var/www/seeddms/www/ext
+    labels:
+    - "traefik.frontend.rule=Host:flow.domainname.com"
+    - "traefik.port=80"
+    - "traefik.backend=seeddms"
+    - "traefik.frontend.entryPoints=http,https"
+    - "traefik.docker.network=traefik"
+    
+
+networks:
+  traefik:
+    external:
+      name: traefik
