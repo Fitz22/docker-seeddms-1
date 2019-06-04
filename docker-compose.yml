@@ -9,10 +9,7 @@ services:
     ports:
     - "8780:80"
     volumes:
-    - /home/florent/docker/seeddms/60:/var/www/seeddms60x
-    #- /home/florent/docker/seeddms/data:/var/www/seeddms/data
-    #- /home/florent/docker/seeddms/conf:/var/www/seeddms/conf
-    #- /home/florent/docker/seeddms/volume:/var/www/seeddms/www/ext
+    - /home/florent/docker/seeddms/60:/var/www/seeddms
     labels:
     - "traefik.frontend.rule=Host:flow.domainname.com"
     - "traefik.port=80"
